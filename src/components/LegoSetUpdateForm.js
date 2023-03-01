@@ -1,18 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function LegoSetUpdateForm(){
+function LegoSetUpdateForm({ onSetUpdate }){
+  const [themes, setThemes] = useState(null)
+  const [showUpdateForm, setShowUpdateForm] = useState(false)
+  const [formData, setFormData] = useState({
+    "name": "",
+    "setNumber": "",
+    "pieces": "",
+    "theme": "select",
+    "age": "",
+    "addTheme": ""
+  })
 
-  /*
-    Working on getting this update form connected
-    Have to set up
-      route both sides
-      conditional logic for what is updated
-      fetch request and state update
-  */
+  useEffect(() => {
+    fetch("http://localhost:9292/themes")
+    .then(r => r.json())
+    .then(d => setThemes(d.map(t => <option value={t.theme} key={t.theme}>{t.theme}</option>)))
+  },[])
 
-  function handleChange(){
-
+  function handleChange(e){
+    const keyName = (e.target.name)
+    const value = (e.target.value)
+    setFormData({
+      ...formData,
+      [keyName]: value
+    })
   }
+
+  const addThemeInput = formData.theme === "create" ? 
+  <input
+    className="form-input"
+    type="text"
+    placeholder="Theme to add"
+    name="addTheme"
+    onChange={handleChange}>
+  </input> : null
 
   return(
     <>
@@ -39,11 +61,11 @@ function LegoSetUpdateForm(){
         onChange={handleChange}>
       </input>
       <select name="theme" onChange={handleChange} className="form-select">
-        <option defaultValue="Select">Select a theme</option>
-        {/* {themes} */}
-        <option value="create">Create New Theme </option>
+        <option defaultValue="Select">Edit theme</option>
+        {themes}
+        <option value="create">Create New Theme</option>
       </select>
-      {/* {addThemeInput} */}
+      {addThemeInput}
       <input
         className="form-input"
         type="text"
