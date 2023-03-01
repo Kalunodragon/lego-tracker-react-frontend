@@ -10,33 +10,47 @@ function LegoSets(){
     fetch("http://localhost:9292/lego_sets")
     .then(r => r.json())
     .then(d => setAllSets(d))
-  })
+  },[])
 
   function handleShowForm(){
     setShowForm(v => !v)
   }
 
-  const displayForm = showForm === false ? <LegoSetForm /> : null
+  function handleSubmit(submission){
+    fetch("http://localhost:9292/lego_sets",{
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(submission)
+    })
+    .then(r => r.json())
+    .then(d => setAllSets(...allSets, d))
+  }
+
+  const displayForm = showForm === false ? <LegoSetForm onHandleSubmit={handleSubmit}/> : null
   const addLegoSetButton = showForm === true ? "New Set" : "Hide Form"
-  
-  const showAllSets = allSets.map(set => {
-    return(
-      <OneLegoSet
+
+  let setsToDisplay
+  if(allSets !== null) setsToDisplay = allSets.map(set => {
+      return (<OneLegoSet
+        key={set.name}
         name={set.name}
         setNumber={set.set_number}
         pieces={set.peices}
         theme={set.theme.theme}
         notes={set.notes}
-        />
-    )
+      />)
   })
 
   return(
     <>
-      <h1>Set Test</h1>
+      <h1>Current Combined Collection!</h1>
       <button className="form-submit" onClick={handleShowForm}>{addLegoSetButton}</button>
+      <p>Here is a list of all current LEGO sets within the joint collection of all owners.</p>
       {displayForm}
-      {showAllSets}
+      {/* {allSets} */}
+      {setsToDisplay}
     </>
   )
 }

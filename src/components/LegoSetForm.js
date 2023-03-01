@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function LegoSetForm(){
+function LegoSetForm({ onHandleSubmit }){
   const [themes, setThemes] = useState(null)
   const [formData, setFormData] = useState({
     "name": "",
@@ -48,6 +48,7 @@ function LegoSetForm(){
     }
 
     console.log(submissionObject)
+    onHandleSubmit(submissionObject)
   }
 
   const addThemeInput = formData.theme === "create" ? 
