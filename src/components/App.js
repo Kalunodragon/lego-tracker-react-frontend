@@ -7,7 +7,10 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:9292/lego_sets")
     .then(r => r.json())
-    .then(d => setState(d))
+    .then(d => {
+      console.log(d)
+      setState(d)
+    })
   },[])
 
   const display = state.map(set => {
