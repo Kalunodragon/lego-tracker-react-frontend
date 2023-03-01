@@ -1,9 +1,13 @@
 import React from "react";
+import LegoSetForm from "./LegoSetForm"
 
 function LegoSets(){
 
   return(
-    <h1>testing</h1>
+    <>
+      <h1>Set Test</h1>
+      <LegoSetForm />
+    </>
   )
 }
 

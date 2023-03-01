@@ -3,7 +3,9 @@ import React from "react";
 function Home() {
 
   return(
-    <h1>TESTING</h1>
+    <>
+      <h1>Home Test</h1>
+    </>
   )
 
 }

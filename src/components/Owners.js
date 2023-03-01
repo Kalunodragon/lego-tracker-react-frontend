@@ -1,9 +1,13 @@
 import React from "react";
+import OwnerForm from "./OwnerForm"
 
 function Owners(){
 
   return(
-    <h1>testing</h1>
+    <>
+      <h1>Owner testing</h1>
+      <OwnerForm />
+    </>
   )
 }
 

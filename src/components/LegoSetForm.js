@@ -4,7 +4,7 @@ function LegoSetForm(){
 
   return(
     <>
-      <h1>Testing</h1>
+      <h1>set form Testing</h1>
     </>
   )
 }
