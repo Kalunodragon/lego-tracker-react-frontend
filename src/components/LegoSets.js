@@ -19,17 +19,36 @@ function LegoSets(){
   function handleSubmit(submission){
     fetch("http://localhost:9292/lego_sets",{
       method: "POST",
-      headers: {
-        "Content-Type":"application/json"
-      },
+      headers: { "Content-Type":"application/json" },
       body: JSON.stringify(submission)
     })
     .then(r => r.json())
     .then(d => setAllSets(...allSets, d))
   }
 
+  function handleUpdate(updateSubmissioin){
+    fetch("http://localhost:9292/lego_sets",{
+      method: "PATCH",
+      headers: { "Content-Type":"application/json" },
+      body: JSON.stringify(updateSubmissioin)
+    })
+    .then(r => r.json())
+    .then(d => handleUpdatedLegoSet(d))
+  }
+
+  function handleUpdatedLegoSet(setToUpdate){
+    const updated = allSets.map(set => {
+      if (set.id === setToUpdate.id){
+        return setToUpdate
+      } else {
+        return set
+      }
+    }) 
+    setAllSets(updated)
+  }
+
   const displayForm = showForm === false ? <LegoSetForm onHandleSubmit={handleSubmit}/> : null
-  const addLegoSetButton = showForm === true ? "New Set" : "Hide Form"
+  const addLegoSetButton = showForm === true ? "Add New Set" : "Hide Form"
 
   let setsToDisplay
   if(allSets !== null) setsToDisplay = allSets.map(set => {
@@ -46,10 +65,9 @@ function LegoSets(){
   return(
     <>
       <h1>Current Combined Collection!</h1>
-      <button className="form-submit" onClick={handleShowForm}>{addLegoSetButton}</button>
+      <button className="create-update" onClick={handleShowForm}>{addLegoSetButton}</button>
       <p>Here is a list of all current LEGO sets within the joint collection of all owners.</p>
       {displayForm}
-      {/* {allSets} */}
       {setsToDisplay}
     </>
   )

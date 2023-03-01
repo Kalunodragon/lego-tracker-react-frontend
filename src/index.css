@@ -39,9 +39,9 @@ button:hover {
 }
 
 .form-submit {
-  height: 25px;
+  height: 31px;
   font-size: large;
-  width: 100px;
+  width: 120px;
 }
 
 .form-input {
@@ -56,4 +56,8 @@ button:hover {
   border-radius: 50px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.create-update {
+  font-size: x-large;
 }
