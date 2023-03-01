@@ -2,17 +2,29 @@ import React, { useEffect, useState } from "react";
 
 
 function App() {
-  const [state, setState] = useState()
+  const [state, setState] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/lego_sets")
-    .then(resp.json())
-    .then(console.log(d))
+    .then(r => r.json())
+    .then(d => setState(d))
   },[])
+
+  const display = state.map(set => {
+    return(
+      <h1 key={set.name}>{set.name}</h1>
+    )
+  })
+
+  if (!state) {
+    return (
+      <h1>Loading</h1>
+    )
+  }
 
   return (
     <div className="App">
-      <h1>testing</h1>
+      {display}
     </div>
   );
 }
