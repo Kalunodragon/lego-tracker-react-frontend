@@ -9,6 +9,6 @@ const root = ReactDOM.createRoot(container)
 
 root.render(
   <BrowserRouter>
-    <App name="Card-Game" />
+    <App name="Lego-Tracker" />
   </BrowserRouter>
 )
