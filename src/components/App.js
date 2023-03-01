@@ -15,10 +15,11 @@ function App() {
 
   const display = state.map(set => {
     return(
-      <div className="Sets">
-        <h1 key={set.name}>{set.name}</h1>
+      <div  key={set.name} className="Sets">
+        <h1>{set.name}</h1>
         <p>Number of peices: {set.peices}</p>
-        <p>Set number: {set.number}</p>
+        <p>Set number: {set.set_number}</p>
+        <p>Theme: {set.theme}</p>
       </div>
     )
   })
@@ -30,9 +31,9 @@ function App() {
   }
 
   return (
-    <grid className="App">
+    <div className="App">
       {display}
-    </grid>
+    </div>
   );
 }
 
