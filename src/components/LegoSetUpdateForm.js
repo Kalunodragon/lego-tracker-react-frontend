@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 function LegoSetUpdateForm({ onSetUpdate }){
   const [themes, setThemes] = useState(null)
-  const [showUpdateForm, setShowUpdateForm] = useState(false)
   const [formData, setFormData] = useState({
     "name": "",
     "setNumber": "",
