@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 
-function LegoSetForm({ themeOptions }){
-  const [mappedOptions, setMappedOptions] = useState(themeOptions)
+function LegoSetForm(){
+  const [themes, setThemes] = useState(null)
   const [formData, setFormData] = useState({
     "name": "",
     "setNumber": "",
     "pieces": "",
-    "theme": "",
+    "theme": "select",
     "age": ""
   })
 
   useEffect(() => {
-    setMappedOptions([...new Set(mappedOptions)].map(opt => {
-      return <option value={opt}>{opt}</option>
-    }))
+    fetch("http://localhost:9292/themes")
+    .then(r => r.json())
+    .then(d => setThemes(d.map(t => <option value={t.theme} key={t.theme}>{t.theme}</option>)))
   },[])
-
-  console.log("from Form: ", themeOptions)
 
   function handleChange(e){
     const keyName = (e.target.name)
@@ -27,10 +25,17 @@ function LegoSetForm({ themeOptions }){
     })
   }
 
+  function handleSubmit(e){
+    e.preventDefault()
+    console.log(formData)
+  }
+
+  if(!themes) return <h1>LOADING...</h1>
+
   return(
     <>
       <h1>Add A New Lego Set</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Name of LEGO set"
@@ -49,8 +54,10 @@ function LegoSetForm({ themeOptions }){
           name="pieces"
           onChange={handleChange}>
         </input>
-        <select>
-          {mappedOptions}
+        <select name="theme" onChange={handleChange}>
+          <option defaultValue="Select">Select an option</option>
+          <option value="create">Create New Theme </option>
+          {themes}
         </select>
         <input
           type="text"
@@ -58,6 +65,7 @@ function LegoSetForm({ themeOptions }){
           name="age"
           onChange={handleChange}>
         </input>
+        <button>Submit</button>
       </form>
     </>
   )
