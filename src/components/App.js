@@ -6,15 +6,17 @@ import LegoSets from "./LegoSets"
 import Owners from "./Owners"
 
 function App() {
-  const [testing, setTesting] = useState(null)
+  const [legoSets, setlegoSets] = useState(null)
+
+  console.log(legoSets)
 
   useEffect(() => {
     fetch("http://localhost:9292/lego_sets")
     .then(r => r.json())
-    .then(d => setTesting(d))
+    .then(d => setlegoSets(d))
   },[])
 
-  if(!testing) return <h1>LOADING...</h1>
+  if(!legoSets) return <h1>LOADING...</h1>
 
   return (
     <div className="App">
@@ -24,7 +26,7 @@ function App() {
           <Home />
         </Route> 
         <Route exact path="/lego_sets">
-          <LegoSets />
+          <LegoSets legoSets={legoSets}/>
         </Route>
         <Route exact path="/owners">
           <Owners />

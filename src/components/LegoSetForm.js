@@ -11,12 +11,15 @@ function LegoSetForm(){
     "addTheme": ""
   })
 
+  // UseEffect used for fetching all the themes from the API
+  // For every theme an option tag is created for the form Dropdown
   useEffect(() => {
     fetch("http://localhost:9292/themes")
     .then(r => r.json())
     .then(d => setThemes(d.map(t => <option value={t.theme} key={t.theme}>{t.theme}</option>)))
   },[])
 
+  // Handles all form changes
   function handleChange(e){
     const keyName = (e.target.name)
     const value = (e.target.value)
@@ -28,7 +31,7 @@ function LegoSetForm(){
 
   function handleSubmit(e){
     e.preventDefault()
-    
+
     let themeData = ""
     if (formData.theme === "create"){
       themeData = formData.addTheme
@@ -36,13 +39,15 @@ function LegoSetForm(){
       themeData = formData.theme
     }
 
-    console.log({
+    const submissionObject = {
       "name": formData.name,
       "setNumber": parseInt(formData.setNumber),
       "pieces": parseInt(formData.pieces),
       "theme": themeData,
       "age": parseInt(formData.age)
-    })
+    }
+
+    console.log(submissionObject)
   }
 
   const addThemeInput = formData.theme === "create" ? 
@@ -77,14 +82,14 @@ function LegoSetForm(){
         <input
           className="form-input"
           type="text"
-          placeholder="Number of LEGO pieces in set"
+          placeholder="Number of LEGO pieces"
           name="pieces"
           onChange={handleChange}>
         </input>
         <select name="theme" onChange={handleChange} className="form-select">
-          <option defaultValue="Select">Select an option</option>
-          <option value="create">Create New Theme </option>
+          <option defaultValue="Select">Select a theme</option>
           {themes}
+          <option value="create">Create New Theme </option>
         </select>
         {addThemeInput}
         <input
