@@ -23,7 +23,7 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes }){
       <p>Theme: {theme}</p>
       {displayNotes}
       <button className="form-submit">Update</button>
-        {/* <LegoSetUpdateForm /> */}
+        <LegoSetUpdateForm />
       <button className="form-submit">Add Note</button>
       <button className="form-submit">Delete</button>
     </div>
