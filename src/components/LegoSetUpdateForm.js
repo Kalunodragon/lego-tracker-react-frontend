@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function LegoSetUpdateForm(){
+  const [checked, setChecked] = useState(false)
 
   return(
-    <h1>Update form testing</h1>
+    <>
+      <h1>Update form testing</h1>
+      {/* <form>
+        <input
+          type="checkbox"
+          checked={checked}
+        ></input>
+      </form> */}
+    </>
   )
 }
 

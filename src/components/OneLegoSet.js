@@ -1,4 +1,5 @@
 import React from "react";
+import LegoSetUpdateForm from "./LegoSetUpdateForm";
 
 function OneLegoSet({ name, setNumber, pieces, theme, notes }){
 
@@ -21,6 +22,10 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes }){
       <p>Pieces: {pieces}</p>
       <p>Theme: {theme}</p>
       {displayNotes}
+      <button className="form-submit">Update</button>
+        {/* <LegoSetUpdateForm /> */}
+      <button className="form-submit">Add Note</button>
+      <button className="form-submit">Delete</button>
     </div>
   )
 }
