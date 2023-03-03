@@ -37,3 +37,23 @@ button:hover {
   transition: 0.5s;
   border-color: white;
 }
+
+.form-submit {
+  height: 25px;
+  font-size: large;
+  width: 100px;
+}
+
+.form-input {
+  height: 25px;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form-select {
+  height: 31px;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
