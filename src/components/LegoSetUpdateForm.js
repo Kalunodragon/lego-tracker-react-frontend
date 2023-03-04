@@ -41,10 +41,12 @@ function LegoSetUpdateForm({ onUpdate, setId, name, setNumber, pieces, theme, ag
       "setNumber": parseInt(formData.setNumber),
       "pieces": parseInt(formData.pieces),
       "theme": themeData,
-      "age": parseInt(formData.age)
+      "age": parseInt(formData.age),
+      "id": setId
     }
 
     console.log(setId, updateObject)
+    onUpdate(updateObject)
   }
 
   const addThemeInput = formData.theme === "create" ? 
