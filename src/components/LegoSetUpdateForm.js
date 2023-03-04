@@ -8,7 +8,8 @@ function LegoSetUpdateForm({ onUpdate, setId, name, setNumber, pieces, theme, ag
     "pieces": pieces,
     "theme": theme,
     "age": age,
-    "addTheme": ""
+    "addTheme": "",
+    "id": setId
   })
 
   useEffect(() => {
@@ -42,10 +43,9 @@ function LegoSetUpdateForm({ onUpdate, setId, name, setNumber, pieces, theme, ag
       "pieces": parseInt(formData.pieces),
       "theme": themeData,
       "age": parseInt(formData.age),
-      "id": setId
+      "set_id": formData.id
     }
-
-    console.log(setId, updateObject)
+    
     onUpdate(updateObject)
   }
 

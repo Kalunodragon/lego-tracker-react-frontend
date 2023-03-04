@@ -28,7 +28,7 @@ function LegoSets(){
 
   // Needs to be connected to the update form
   function handleUpdate(updateSubmissioin){
-    fetch("http://localhost:9292/lego_sets",{
+    fetch("http://localhost:9292/lego_sets/patch",{
       method: "PATCH",
       headers: { "Content-Type":"application/json" },
       body: JSON.stringify(updateSubmissioin)
@@ -44,7 +44,8 @@ function LegoSets(){
       } else {
         return set
       }
-    }) 
+    })
+    window.alert(setToUpdate.name + "has been updated") 
     setAllSets(updated)
   }
 

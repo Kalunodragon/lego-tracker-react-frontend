@@ -26,6 +26,7 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
       <p>Set Number: {setNumber}</p>
       <p>Pieces: {pieces}</p>
       <p>Theme: {theme}</p>
+      <p>Recommended age: {age}+</p>
       {displayNotes}
       <button className="form-submit" onClick={handleButtonClick}>Update</button>
         {showUpdateForm === true ? 
@@ -37,7 +38,6 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
             theme={theme}
             age={age}
             onUpdate={onUpdate}/> : null}
-      <button className="form-submit" onClick={handleButtonClick}>Add Note</button>
       <button className="form-submit" onClick={handleButtonClick}>Delete</button>
     </div>
   )
