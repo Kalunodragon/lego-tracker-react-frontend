@@ -2,6 +2,14 @@ import React, { useState } from "react";
 
 function LegoSetUpdateForm(){
 
+  /*
+    Working on getting this update form connected
+    Have to set up
+      route both sides
+      conditional logic for what is updated
+      fetch request and state update
+  */
+
   function handleChange(){
 
   }

@@ -26,6 +26,7 @@ function LegoSets(){
     .then(d => setAllSets(...allSets, d))
   }
 
+  // Needs to be connected to the update form
   function handleUpdate(updateSubmissioin){
     fetch("http://localhost:9292/lego_sets",{
       method: "PATCH",
@@ -59,6 +60,7 @@ function LegoSets(){
         pieces={set.peices}
         theme={set.theme.theme}
         notes={set.notes}
+        // needs some callback for update form
       />)
   })
 
