@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-function LegoSetUpdateForm({ onSetUpdate }){
+function LegoSetUpdateForm({ onUpdate, setId, name, setNumber, pieces, theme, age }){
   const [themes, setThemes] = useState(null)
   const [formData, setFormData] = useState({
-    "name": "",
-    "setNumber": "",
-    "pieces": "",
-    "theme": "select",
-    "age": "",
+    "name": name,
+    "setNumber": setNumber,
+    "pieces": pieces,
+    "theme": theme,
+    "age": age,
     "addTheme": ""
   })
 
@@ -26,49 +26,81 @@ function LegoSetUpdateForm({ onSetUpdate }){
     })
   }
 
+  function handleUpdateSubmit(e){
+    e.preventDefault()
+
+    let themeData = ""
+    if (formData.theme === "create"){
+      themeData = formData.addTheme
+    } else {
+      themeData = formData.theme
+    }
+
+    const updateObject = {
+      "name": formData.name,
+      "setNumber": parseInt(formData.setNumber),
+      "pieces": parseInt(formData.pieces),
+      "theme": themeData,
+      "age": parseInt(formData.age)
+    }
+
+    console.log(setId, updateObject)
+  }
+
   const addThemeInput = formData.theme === "create" ? 
-  <input
-    className="form-input"
-    type="text"
-    placeholder="Theme to add"
-    name="addTheme"
-    onChange={handleChange}>
-  </input> : null
+    <label>New Theme:
+      <input
+        className="form-input"
+        type="text"
+        placeholder="Add new theme"
+        name="addTheme"
+        onChange={handleChange}>
+      </input> 
+    </label> : null
 
   return(
     <>
-      <form>
+      <form onSubmit={handleUpdateSubmit}>
+        <label>Set Name:</label>
       <input
         className="form-input"
         type="text"
         placeholder="Edit Name Set"
+        value={formData.name}
         name="name"
         onChange={handleChange}>
       </input>
+        <label>Set Number:</label>
       <input
         className="form-input"
         type="text"
         placeholder="Edit Set Number"
+        value={formData.setNumber}
         name="setNumber"
         onChange={handleChange}>
       </input>
+        <label>Pieces:</label>
       <input
         className="form-input"
         type="text"
         placeholder="Edit Number Pieces"
+        value={formData.pieces}
         name="pieces"
         onChange={handleChange}>
       </input>
+        <label>Theme:</label>
       <select name="theme" onChange={handleChange} className="form-select">
-        <option defaultValue="Select">Edit theme</option>
+        <option defaultValue="current">{theme}</option>
         {themes}
         <option value="create">Create New Theme</option>
       </select>
       {addThemeInput}
+        <label>Age:</label>
       <input
         className="form-input"
         type="text"
         placeholder="Edit age"
+        value={formData.age}
         name="age"
         onChange={handleChange}>
       </input>

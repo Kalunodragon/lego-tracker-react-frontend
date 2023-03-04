@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LegoSetUpdateForm from "./LegoSetUpdateForm";
 
-function OneLegoSet({ name, setNumber, pieces, theme, notes, onSetUpdate }){
+function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setId }){
   const [showUpdateForm, setShowUpdateForm] = useState(false)
 
   let noteCount = 0
@@ -16,10 +16,8 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onSetUpdate }){
     }
   })
 
-  function handleButtonClick(e){
-    const key = e.target.name
-    const value = e.target.value
-    setShowUpdateForm({...showUpdateForm, [key]: !value})
+  function handleButtonClick(){
+    setShowUpdateForm(v => !v)
   }
 
   return(
@@ -29,10 +27,18 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onSetUpdate }){
       <p>Pieces: {pieces}</p>
       <p>Theme: {theme}</p>
       {displayNotes}
-      <button value={showUpdateForm.update} className="form-submit" name="update" onClick={handleButtonClick}>Update</button>
-        {showUpdateForm.update === true ? <LegoSetUpdateForm onSetUpdate={onSetUpdate}/> : null}
-      <button value={showUpdateForm.update} className="form-submit" name="note" onClick={handleButtonClick}>Add Note</button>
-      <button value={showUpdateForm.update} className="form-submit" name="delete" onClick={handleButtonClick}>Delete</button>
+      <button className="form-submit" onClick={handleButtonClick}>Update</button>
+        {showUpdateForm === true ? 
+          <LegoSetUpdateForm
+            setId={setId}
+            name={name}
+            setNumber={setNumber}
+            pieces={pieces}
+            theme={theme}
+            age={age}
+            onUpdate={onUpdate}/> : null}
+      <button className="form-submit" onClick={handleButtonClick}>Add Note</button>
+      <button className="form-submit" onClick={handleButtonClick}>Delete</button>
     </div>
   )
 }

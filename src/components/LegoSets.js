@@ -60,7 +60,9 @@ function LegoSets(){
         pieces={set.peices}
         theme={set.theme.theme}
         notes={set.notes}
-        onSetUpdate={handleUpdate}
+        age={set.age}
+        onUpdate={handleUpdate}
+        setId={set.id}
         // needs some callback for update form
       />)
   })
