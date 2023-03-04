@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LegoSetUpdateForm from "./LegoSetUpdateForm";
 
-function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setId }){
+function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setId, onDelete }){
   const [showUpdateForm, setShowUpdateForm] = useState(false)
 
   let noteCount = 0
@@ -20,15 +20,21 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
     setShowUpdateForm(v => !v)
   }
 
+  function deleteLegoSet(){
+    onDelete(setId)
+  }
+
   return(
-    <div>
+    <div className="div-sets">
       <h1>{name}</h1>
       <p>Set Number: {setNumber}</p>
       <p>Pieces: {pieces}</p>
       <p>Theme: {theme}</p>
       <p>Recommended age: {age}+</p>
       {displayNotes}
-      <button className="form-submit" onClick={handleButtonClick}>Update</button>
+      <button className="form-submit" onClick={handleButtonClick}>
+        {showUpdateForm === true ? "Hide Form" : "Update"}
+      </button>
         {showUpdateForm === true ? 
           <LegoSetUpdateForm
             setId={setId}
@@ -38,7 +44,11 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
             theme={theme}
             age={age}
             onUpdate={onUpdate}/> : null}
-      <button className="form-submit" onClick={handleButtonClick}>Delete</button>
+      {showUpdateForm === true ?
+        <button
+          className="form-submit"
+          onClick={deleteLegoSet}
+        >DELETE</button> : null}
     </div>
   )
 }

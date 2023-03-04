@@ -26,7 +26,6 @@ function LegoSets(){
     .then(d => setAllSets(...allSets, d))
   }
 
-  // Needs to be connected to the update form
   function handleUpdate(updateSubmissioin){
     fetch("http://localhost:9292/lego_sets/patch",{
       method: "PATCH",
@@ -45,8 +44,12 @@ function LegoSets(){
         return set
       }
     })
-    window.alert(setToUpdate.name + "has been updated") 
+    window.alert(setToUpdate.name + ": has been updated") 
     setAllSets(updated)
+  }
+
+  function handleDelete(itemToDelete){
+    console.log(itemToDelete)
   }
 
   const displayForm = showForm === false ? <LegoSetForm onHandleSubmit={handleSubmit}/> : null
@@ -64,7 +67,7 @@ function LegoSets(){
         age={set.age}
         onUpdate={handleUpdate}
         setId={set.id}
-        // needs some callback for update form
+        onDelete={handleDelete}
       />)
   })
 

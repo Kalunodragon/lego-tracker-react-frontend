@@ -61,3 +61,10 @@ button:hover {
 .create-update {
   font-size: x-large;
 }
+
+.div-sets {
+  border-style: ridge;
+  border-radius: 20px;
+  margin: 1em;
+  padding: 1em;
+}
