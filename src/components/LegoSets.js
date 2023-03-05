@@ -33,10 +33,10 @@ function LegoSets(){
       body: JSON.stringify(updateSubmissioin)
     })
     .then(r => r.json())
-    .then(d => handleUpdatedLegoSet(d))
+    .then(d => updateAllSets(d))
   }
 
-  function handleUpdatedLegoSet(setToUpdate){
+  function updateAllSets(setToUpdate){
     const updated = allSets.map(set => {
       if (set.id === setToUpdate.id){
         return setToUpdate
@@ -48,8 +48,17 @@ function LegoSets(){
     setAllSets(updated)
   }
 
-  function handleDelete(itemToDelete){
-    console.log(itemToDelete)
+  function handleDelete(idToDelete, nameOfSet){
+    console.log(idToDelete, nameOfSet)
+    fetch(`http://localhost:9292/lego_set/${idToDelete}`,{
+      method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(d => setAllSets(pre => {
+      pre.filter(set => set.id !== d.id)
+    }))
+
+    // window.alert(nameOfSet + ": And its notes have been deleted from the list.")
   }
 
   const displayForm = showForm === false ? <LegoSetForm onHandleSubmit={handleSubmit}/> : null

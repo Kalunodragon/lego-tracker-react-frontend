@@ -44,6 +44,21 @@ button:hover {
   width: 120px;
 }
 
+.delete {
+  height: 31px;
+  font-size: large;
+  width: 120px;
+  background-color:rgb(0, 0, 0, 0) ;
+}
+
+.delete:hover {
+  color: white;
+  background-color:red;
+  transition: 0.5s;
+  border-color: white;
+}
+
+
 .form-input {
   height: 25px;
   border-radius: 50px;
