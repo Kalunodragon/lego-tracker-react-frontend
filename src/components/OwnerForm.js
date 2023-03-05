@@ -3,7 +3,7 @@ import React from "react";
 function OwnerForm(){
 
   return(
-    <h1>testing</h1>
+    <h1>Add a new Owner here to help track their LEGO</h1>
   )
 }
 
