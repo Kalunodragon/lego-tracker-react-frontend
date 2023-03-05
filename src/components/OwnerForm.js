@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function OwnerForm(){
+function OwnerForm({ onNewOwner }){
   const [formData, setFormData] = useState({
     "firstName": "",
     "lastName": ""
@@ -23,7 +23,7 @@ function OwnerForm(){
     ){
       window.alert("Please fill in entire name, Thank You!")
     } else {
-      console.log(formData)
+      onNewOwner(formData)
     }
   }
 

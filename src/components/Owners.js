@@ -12,6 +12,10 @@ function Owners(){
     .then(d => setAllOwners(d))
   },[])
 
+  function handleNewOwner(newOwner){
+    console.log(newOwner)
+  }
+
   console.log(allOwners)
 
   function handleClick(){
@@ -28,6 +32,7 @@ function Owners(){
         first={person.first_name}
         last={person.last_name}
         sets={person.lego_sets}
+        notes={person.notes}
       />
     )
   })
@@ -36,7 +41,7 @@ function Owners(){
     <>
       <h1>All Owners</h1>
       <button onClick={handleClick}>{showForm ? "Hide Form": "Add Owner"}</button>
-      {showForm ? <OwnerForm /> : null}
+      {showForm ? <OwnerForm onNewOwner={handleNewOwner}/> : null}
       {ownersToDisplay}
     </>
   )
