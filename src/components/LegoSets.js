@@ -23,7 +23,10 @@ function LegoSets(){
       body: JSON.stringify(submission)
     })
     .then(r => r.json())
-    .then(d => setAllSets(...allSets, d))
+    .then(d => {
+      const newList = [...allSets, d]  
+      setAllSets(newList)
+    })
   }
 
   function handleUpdate(updateSubmissioin){
@@ -54,20 +57,22 @@ function LegoSets(){
       method: "DELETE"
     })
     .then(r => r.json())
-    .then(d => setAllSets(pre => {
-      pre.filter(set => set.id !== d.id)
-    }))
-
-    // window.alert(nameOfSet + ": And its notes have been deleted from the list.")
+    .then(d => {
+      const updatedList = allSets.filter(set => set.id !== d.id)
+      setAllSets(updatedList)
+    })
+    window.alert(nameOfSet + ": And its notes have been deleted from the list.")
   }
 
   const displayForm = showForm === false ? <LegoSetForm onHandleSubmit={handleSubmit}/> : null
   const addLegoSetButton = showForm === true ? "Add New Set" : "Hide Form"
 
   let setsToDisplay
+  let count = 0
   if(allSets !== null) setsToDisplay = allSets.map(set => {
+    count++
       return (<OneLegoSet
-        key={set.name}
+        key={set.name + count}
         name={set.name}
         setNumber={set.set_number}
         pieces={set.peices}

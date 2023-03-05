@@ -41,13 +41,12 @@ function LegoSetForm({ onHandleSubmit }){
 
     const submissionObject = {
       "name": formData.name,
-      "setNumber": parseInt(formData.setNumber),
-      "pieces": parseInt(formData.pieces),
+      "set_number": parseInt(formData.setNumber),
+      "peices": parseInt(formData.pieces),
       "theme": themeData,
       "age": parseInt(formData.age)
     }
 
-    console.log(submissionObject)
     onHandleSubmit(submissionObject)
   }
 

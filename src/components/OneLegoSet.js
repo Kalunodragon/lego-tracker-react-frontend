@@ -21,12 +21,12 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
   }
 
   function deleteLegoSet(){
-    // const result = window.confirm("Is it OK to permanently delete: " + name + " , from the list? This will delete all notes that belong to this set as well!")
-    // if(result){
+    const result = window.confirm("Is it OK to permanently delete: " + name + " , from the list? This will delete all notes that belong to this set as well!")
+    if(result){
       onDelete(setId, name)
-    // } else {
-    //   window.alert("Be careful with that button! It could destroy us all!")
-    // }
+    } else {
+      window.alert("Be careful with that button! It could destroy us all!")
+    }
   }
 
   return(
