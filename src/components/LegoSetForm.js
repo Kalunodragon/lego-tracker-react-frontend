@@ -39,15 +39,25 @@ function LegoSetForm({ onHandleSubmit }){
       themeData = formData.theme
     }
 
-    const submissionObject = {
-      "name": formData.name,
-      "set_number": parseInt(formData.setNumber),
-      "peices": parseInt(formData.pieces),
-      "theme": themeData,
-      "age": parseInt(formData.age)
+    if(
+      formData.name === "" ||
+      formData.setNumber === "" ||
+      formData.pieces === "" ||
+      formData.age === "" ||
+      themeData === "" ||
+      themeData === "Select a theme"
+    ){
+      return window.alert("Please fill out all of the form fields when adding a new LEGO set! Thank You!")
+    } else {
+      const submissionObject = {
+        "name": formData.name,
+        "set_number": parseInt(formData.setNumber),
+        "peices": parseInt(formData.pieces),
+        "theme": themeData,
+        "age": parseInt(formData.age)
+      }
+      onHandleSubmit(submissionObject)
     }
-
-    onHandleSubmit(submissionObject)
   }
 
   const addThemeInput = formData.theme === "create" ? 

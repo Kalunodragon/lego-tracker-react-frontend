@@ -24,7 +24,8 @@ function LegoSets(){
     })
     .then(r => r.json())
     .then(d => {
-      const newList = [...allSets, d]  
+      console.log(d)
+      const newList = [...allSets, d].sort((a, b) => a.name > b.name ? 1 : -1)
       setAllSets(newList)
     })
   }
