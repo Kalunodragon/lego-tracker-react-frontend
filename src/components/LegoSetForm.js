@@ -57,6 +57,15 @@ function LegoSetForm({ onHandleSubmit }){
         "age": parseInt(formData.age)
       }
       onHandleSubmit(submissionObject)
+      window.alert(`${formData.name}: Has been added to the list`)
+      setFormData({
+        "name": "",
+        "setNumber": "",
+        "pieces": "",
+        "theme": "select",
+        "age": "",
+        "addTheme": ""
+      })
     }
   }
 
