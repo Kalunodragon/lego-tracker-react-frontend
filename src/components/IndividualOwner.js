@@ -12,6 +12,14 @@ function IndividualOwner({ first, last, sets }){
 		}
 	})
 
+	/*
+		Notes ? Add to individual owners?
+		Or
+		Add them to their own page?
+
+		Work on this after owners!!!
+	*/
+
 	return (
 		<div className="people">
 			<h1>{first} {last}</h1>
