@@ -1,19 +1,38 @@
 import React from "react";
 
-function IndividualOwner({ first, last, sets, notes }){
+function IndividualOwner({ first, last, sets, notes, update }){
 
 	function handleButtonClick(e){
-		console.log(e.target.value)
+		const type = e.target.name
+		const info = e.target.value
+
+		if(type === "note"){
+			console.log(info)
+			const updateObject = {
+				"note_id": info[0],
+				"lego_set_id": info[1]
+			}
+			fetch("http://localhost:9292/note/patch",{
+				method: "PATCH",
+				headers: {"Content-Type":"application/json"},
+				body: JSON.stringify(updateObject)
+			})
+			.then(r => r.json())
+			.then(d => update(d))
+		}
+		if(type === "set"){
+
+		}
+
 	}
 
 	let count = 0
 	const displaySets = sets.map(set =>{
-		// if(set !== null){
+		if(set !== null){
 
 		const noteDisplay = notes.map(note =>{
 			if (set.id === note.lego_set_id && note.body !== null){
 				count++
-				const values = [note.id, note.lego_set_id]
 				return(
 					<div key={count + first}>
 						<p>Note: {note.body}</p>
@@ -21,7 +40,7 @@ function IndividualOwner({ first, last, sets, notes }){
 							className="form-submit"
 							name="note"
 							onClick={handleButtonClick}	
-							value={values}
+							value={[note.id, note.lego_set_id]}
 						>Delete Note</button>
 					</div>
 				)
@@ -29,7 +48,7 @@ function IndividualOwner({ first, last, sets, notes }){
 				return null
 			}
 		})
-		if(set !== null){
+		// if(set !== null){
 			count ++
 			const setAndName = [set.id, first]
 			return(

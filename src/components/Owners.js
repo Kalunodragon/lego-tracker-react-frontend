@@ -52,6 +52,7 @@ function Owners(){
     return (
       <IndividualOwner
         key={person.first_name + count}
+        update={handleAdd}
         first={person.first_name}
         last={person.last_name}
         sets={person.lego_sets}
