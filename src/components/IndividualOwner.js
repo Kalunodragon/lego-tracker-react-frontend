@@ -11,7 +11,7 @@ function IndividualOwner({ first, last, sets, notes, update }){
 			patchNote({"note_id": info})
 		}
 		if(type === "set"){
-			console.log(info)
+			deleteNote(info)
 		}
 	}
 
@@ -25,10 +25,17 @@ function IndividualOwner({ first, last, sets, notes, update }){
 		.then(d => update(d))
 	}
 
+	function deleteNote(noteId){
+		fetch(`http://localhost:9292/note/delete/${noteId}`,{
+			method: "DELETE"
+		})
+		.then(r => r.json())
+		.then(d => update(d))
+	}
+
 	let count = 0
 	const displaySets = sets.map(set =>{
 		if(set !== null){
-
 		const noteDisplay = notes.map(note =>{
 			if (set.id === note.lego_set_id && note.body !== null){
 				count++
@@ -41,39 +48,40 @@ function IndividualOwner({ first, last, sets, notes, update }){
 							onClick={handleButtonClick}
 							value={note.id}
 						>Delete Note</button>
+						<button
+							className="form-submit"
+							name="set"
+							onClick={handleButtonClick}
+							value={note.id}
+						>Remove Set</button>
 					</div>
 				)
+			} else if(set.id === note.lego_set_id && note.body === null){
+				return(
+					<button
+					key={count + first + last}
+					className="form-submit"
+					name="set"
+					onClick={handleButtonClick}
+					value={note.id}
+				>Remove Set</button>
+				)	
 			} else {
 				return null
 			}
 		})
-		// if(set !== null){
+
 			count ++
-			const setAndName = [set.id, first]
 			return(
 				<div key={first + count} className="owner-sets">
 					<p>Set Name: {set.name}</p>
 					{noteDisplay}
-					<button
-						className="form-submit"
-						name="set"
-						onClick={handleButtonClick}
-						value={setAndName}
-					>Remove Set</button>
 				</div>
 			)
 		} else {
 			return null
 		}
 	})
-
-	/*
-		Notes ? Add to individual owners?
-		Or
-		Add them to their own page?
-
-		Work on this after owners!!!
-	*/
 
 	return (
 		<div className="people">

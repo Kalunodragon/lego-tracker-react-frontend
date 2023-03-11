@@ -59,6 +59,8 @@ function Owners(){
     )
   })
 
+  console.log(allOwners)
+
   return(
     <>
       <h1>All Owners</h1>
