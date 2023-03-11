@@ -29,8 +29,6 @@ function Owners(){
     .then(d => setAllOwners([...allOwners, d].sort((a, b) => a.name > b.name ? -1 : 1)))
   }
 
-  console.log(allOwners)
-
   function handleFormButtonClick(){
     setShowNote(false)
     setShowForm(s => !s)

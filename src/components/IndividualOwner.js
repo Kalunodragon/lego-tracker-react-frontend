@@ -8,22 +8,21 @@ function IndividualOwner({ first, last, sets, notes, update }){
 
 		if(type === "note"){
 			console.log(info)
-			const updateObject = {
-				"note_id": info[0],
-				"lego_set_id": info[1]
-			}
-			fetch("http://localhost:9292/note/patch",{
-				method: "PATCH",
-				headers: {"Content-Type":"application/json"},
-				body: JSON.stringify(updateObject)
-			})
-			.then(r => r.json())
-			.then(d => update(d))
+			patchNote({"note_id": info})
 		}
 		if(type === "set"){
-
+			console.log(info)
 		}
+	}
 
+	function patchNote(noteId){
+		fetch("http://localhost:9292/note/patch",{
+			method: "PATCH",
+			headers: {"Content-Type":"application/json"},
+			body: JSON.stringify(noteId)
+		})
+		.then(r => r.json())
+		.then(d => update(d))
 	}
 
 	let count = 0
@@ -39,8 +38,8 @@ function IndividualOwner({ first, last, sets, notes, update }){
 						<button
 							className="form-submit"
 							name="note"
-							onClick={handleButtonClick}	
-							value={[note.id, note.lego_set_id]}
+							onClick={handleButtonClick}
+							value={note.id}
 						>Delete Note</button>
 					</div>
 				)
