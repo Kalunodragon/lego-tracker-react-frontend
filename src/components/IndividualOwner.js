@@ -3,42 +3,25 @@ import React from "react";
 function IndividualOwner({ first, last, sets, notes }){
 
 	function handleButtonClick(e){
-		const type = e.target.name
-		const info = e.target.value
-		if(type === "note"){
-			removeNote(info)
-		}
-		if(type === "set"){
-			removeNote(info)
-			removeSet(info)
-		}
-	}
-
-	function removeSet(set){
-		// deletes the whole note insance by note id
-		console.log(set)
-	}
-
-	function removeNote(note){
-		// Removes the body portion of the note
-		// AKA patch the body to null/nil
-		console.log("note-id: ", note[0])
-		console.log("note-set-id: ", note[1])
+		console.log(e.target.value)
 	}
 
 	let count = 0
 	const displaySets = sets.map(set =>{
+		// if(set !== null){
+
 		const noteDisplay = notes.map(note =>{
 			if (set.id === note.lego_set_id && note.body !== null){
 				count++
+				const values = [note.id, note.lego_set_id]
 				return(
-					<div>
-						<p key={count + first}>Note: {note.body}</p>
+					<div key={count + first}>
+						<p>Note: {note.body}</p>
 						<button
 							className="form-submit"
 							name="note"
 							onClick={handleButtonClick}	
-							value={[note.id, note.lego_set_id]}
+							value={values}
 						>Delete Note</button>
 					</div>
 				)
@@ -47,8 +30,8 @@ function IndividualOwner({ first, last, sets, notes }){
 			}
 		})
 		if(set !== null){
-			console.log(set)
 			count ++
+			const setAndName = [set.id, first]
 			return(
 				<div key={first + count} className="owner-sets">
 					<p>Set Name: {set.name}</p>
@@ -57,7 +40,7 @@ function IndividualOwner({ first, last, sets, notes }){
 						className="form-submit"
 						name="set"
 						onClick={handleButtonClick}
-						value={set}
+						value={setAndName}
 					>Remove Set</button>
 				</div>
 			)
