@@ -41,15 +41,15 @@ function IndividualOwner({ first, last, sets, notes, update }){
 				count++
 				return(
 					<div key={count + first}>
-						<p>Note: {note.body}</p>
+						<h3>Note: {note.body}</h3>
 						<button
-							className="form-submit"
+							className="delete"
 							name="note"
 							onClick={handleButtonClick}
 							value={note.id}
 						>Delete Note</button>
 						<button
-							className="form-submit"
+							className="delete"
 							name="set"
 							onClick={handleButtonClick}
 							value={note.id}
@@ -60,7 +60,7 @@ function IndividualOwner({ first, last, sets, notes, update }){
 				return(
 					<button
 					key={count + first + last}
-					className="form-submit"
+					className="delete"
 					name="set"
 					onClick={handleButtonClick}
 					value={note.id}
@@ -74,7 +74,7 @@ function IndividualOwner({ first, last, sets, notes, update }){
 			count ++
 			return(
 				<div key={first + count} className="owner-sets">
-					<p>Set Name: {set.name}</p>
+					<h2 className="set-name">Set Name: {set.name}</h2>
 					{noteDisplay}
 				</div>
 			)

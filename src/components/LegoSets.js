@@ -90,7 +90,7 @@ function LegoSets(){
     <>
       <h1>Current Combined Collection!</h1>
       <button className="create-update" onClick={handleShowForm}>{addLegoSetButton}</button>
-      <p>Here is a list of all current LEGO sets within the joint collection of all owners.</p>
+      <p>Here is a list of all current LEGO sets within the joint collection of all owners, and all the notes about each set.</p>
       {displayForm}
       {setsToDisplay}
     </>

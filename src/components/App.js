@@ -8,8 +8,6 @@ import Owners from "./Owners"
 function App() {
   const [legoSets, setlegoSets] = useState(null)
 
-  console.log(legoSets)
-
   useEffect(() => {
     fetch("http://localhost:9292/lego_sets")
     .then(r => r.json())

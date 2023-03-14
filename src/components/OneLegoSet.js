@@ -9,7 +9,7 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
     if (note.body !== null){
       noteCount++
       return(
-        <p key={name + noteCount}>{note.body}</p>
+        <p key={name + noteCount}>Note {noteCount}: {note.body}</p>
       )
     } else {
       return null
@@ -21,7 +21,7 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
   }
 
   function deleteLegoSet(){
-    const result = window.confirm("Is it OK to permanently delete: " + name + " , from the list? This will delete all notes that belong to this set as well!")
+    const result = window.confirm("Is it OK to permanently delete: " + name + " , from the list?")
     if(result){
       onDelete(setId, name)
     } else {
@@ -31,8 +31,8 @@ function OneLegoSet({ name, setNumber, pieces, theme, notes, onUpdate, age, setI
 
   return(
     <div className="div-sets">
-      <h1>{name}</h1>
-      <p>Set Number: {setNumber}</p>
+      <h1 className="set-name">{name}</h1>
+      <h2>Set Number: {setNumber}</h2>
       <p>Pieces: {pieces}</p>
       <p>Theme: {theme}</p>
       <p>Recommended age: {age}+</p>

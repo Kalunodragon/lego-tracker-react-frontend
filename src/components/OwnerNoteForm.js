@@ -51,10 +51,15 @@ function OwnerNoteForm({ owners, onAddedNote }){
       "lego_set_id": noteFormData.legoSet,
       "body": noteFormData.text
     }
+    submitFetch(noteSubmission)
+    e.target.reset()
+  }
+
+  function submitFetch(info){
     fetch("http://localhost:9292/notes",{
       method: "POST",
       headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(noteSubmission)
+      body: JSON.stringify(info)
     })
     .then(r => r.json())
     .then(d => onAddedNote(d))

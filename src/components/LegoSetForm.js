@@ -58,6 +58,7 @@ function LegoSetForm({ onHandleSubmit }){
       }
       onHandleSubmit(submissionObject)
       window.alert(`${formData.name}: Has been added to the list`)
+      e.target.reset()
     }
   }
 
@@ -75,6 +76,7 @@ function LegoSetForm({ onHandleSubmit }){
   return(
     <>
       <h1>Add A New Lego Set</h1>
+      <p>For adding a new LEGO set please make sure to fill out all form elements before submitting!</p>
       <form onSubmit={handleSubmit} className="form-main">
         <input
           className="form-input"

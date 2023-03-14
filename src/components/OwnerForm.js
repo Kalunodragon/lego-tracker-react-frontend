@@ -24,6 +24,10 @@ function OwnerForm({ onNewOwner }){
       window.alert("Please fill in entire name, Thank You!")
     } else {
       onNewOwner(formData)
+      setFormData({
+        "firstName": "",
+        "lastName": ""
+      })
     }
   }
 
