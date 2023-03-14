@@ -69,7 +69,7 @@ function OwnerNoteForm({ owners, onAddedNote }){
 
   return(
     <>
-      <h3>Make sure to add an owner before assigning a set!</h3>
+      <h1>Make sure to add an owner before assigning a set!</h1>
       <p>Select an Owner, then select a set, optinonal add a note about the set!</p>
       <form onSubmit={handleSubmit}>
         <select className="note" name="owner" onChange={handleChange}>
