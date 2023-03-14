@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# LEGO Set Tracking Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A tool designed to make tracking of LEGO sets and some notes easier
 
-## Available Scripts
+### Description:
 
-In the project directory, you can run:
+This is a SPA that allows someone to keep track of multiple owners of LEGO sets as well as a bunch of different types of LEGO sets.
 
-### `npm start`
+### Project Info:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project uses a React.js Front-End as well as a Ruby Sinatra Active-Record Back-End API which can be found [HERE](https://github.com/Kalunodragon/Lego-Tracker-Sinatra-Backend).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##
+### Setup:
 
-### `npm test`
+#### Front-End:
+First you will need to fork and clone this project down into your environment. Once it has been cloned you can move down into this new directory and use `npm start` to launch the browser view of the project. If it doesn't launch a browser window navigate to your `localhost:3000` within the browser to load the application. Don't forget to use `npm install` before the `npm start`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### API
+For the Back-End you will need to for and clone the other repo [HERE](https://github.com/Kalunodragon/Lego-Tracker-Sinatra-Backend). Once you have it cloned down into your environment run the command `bundle install` then once everthing is finished there run `rake db:migrate` then `rake server`.
 
-### `npm run build`
+YAY the project has be opened succefully!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Notes:
+If you want to use the seed data that is loaded use `rake db:seed` which will seed the database with some information. A few sets that I personally own as well as a few users. This can be skipped if you want an empty database.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### How to use this App:
 
-### `npm run eject`
+This app will load with a home page that gives a bit of information on how to fully use the app. The main way to use this is to navigate to the LEGO set tabe and add a LEGO set then navigate to the Owner tab and add an owner and assign them the set with any notes that need to go along with it.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Credits:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is the Phase 3 project for Andrew Onulak, Student at Flatiron School for Software Engineering.
